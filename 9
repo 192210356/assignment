@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+    int n, arr[100], i, j, flag;
+
+    printf("Print all unique elements of an array:\n------------------------------------------\n");
+
+    printf("Input the number of elements to be stored in the array: ");
+    scanf("%d", &n);
+
+    printf("Input %d elements in the array:\n", n);
+    for (i = 0; i < n; i++) {
+        printf("element - %d : ", i);
+        scanf("%d", &arr[i]);
+    }
+
+    printf("The unique elements in the array are: ");
+    for (i = 0; i < n; i++) {
+        flag = 0;  // Initialize flag to 0 for each element
+        for (j = 0; j < i; j++) {
+            if (arr[i] == arr[j]) {
+                flag = 1;  // If element is repeated, set flag to 1
+                break;
+            }
+        }
+        for (j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                flag = 1;  // If element is repeated, set flag to 1
+                break;
+            }
+        }
+        if (flag == 0) {  // If flag is 0, print the unique element
+            printf("%d ", arr[i]);
+        }
+    }
+
+    return 0;
+}
